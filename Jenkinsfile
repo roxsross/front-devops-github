@@ -17,6 +17,9 @@ pipeline {
         }
     }//end stages
     post { 
+         always { 
+            cleanWs()
+        }
         success { 
             sh  ("""
                 curl -s -X POST $BOT_URL -d chat_id=${TELEGRAM_CHAT_ID} -d parse_mode=markdown -d text='*Full project name*: ${env.JOB_NAME} \n*Branch*: [$GIT_BRANCH]($GIT_URL) \n*Build* : [OK](${BUILD_URL}consoleFull)'
@@ -29,4 +32,4 @@ pipeline {
          }
     }
 }
-}
+
