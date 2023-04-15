@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    enviroment{
+    environment{
         BUCKET = "jenkins-web-2023"
     }
 
